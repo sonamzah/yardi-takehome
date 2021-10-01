@@ -1,0 +1,13 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+#offcanvas-content-wrap {
+  position: relative;
+}
+
+#btn-close-offcanvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
