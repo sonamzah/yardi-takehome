@@ -19,19 +19,6 @@ body {
   color: white;
 }
 
-/* custom "award icon" list elements for progress bar */
-.progressbar-awards li {
-  list-style-type: none;
-  border-radius: 100%;
-  background-color: white;
-  margin-left: 4rem;
-  float: left;
-  font-size: 1.25rem;
-}
-.progressbar-awards li .award {
-  font-size: 1.45rem;
-}
-
 .profile-pic-wrap {
   /* text-align: center; */
 }
@@ -75,28 +62,6 @@ body {
   width: inherit;
 }
 
-/* Used to remove white space from Award medal icon in progress-bar in Badge section */
-.awarded {
-  /* Note: Setting the height to be virtually non-existant 
-  to avoid white space between progress bar and awards
-  -- Because the parent <ul> is positioned absolutely, this element is on its own plane
-  and I dont think it will cause any problems -- however I am uncertain if this is a good practice...
-  ... doesnt seem like it */
-  height: 1px;
-}
-.award-gold {
-  fill: #ffd700;
-  color: #ffd700;
-}
-.award-silver {
-  fill: #c0c0c0;
-  color: #c0c0c0;
-}
-.award-bronze {
-  fill: #cd7f32;
-  color: #cd7f32;
-}
-
 /* progress bar */
 .figure {
   width: 100%;
@@ -115,6 +80,49 @@ body {
 
   /* Gold */
   /* width: 96%; */
+}
+/* custom "award icon" list elements for progress bar */
+.progressbar-awards li {
+  list-style-type: none;
+  border-radius: 100%;
+  background-color: white;
+  margin-left: 4rem;
+  float: left;
+  font-size: 1.25rem;
+}
+.progressbar-awards li .award {
+  font-size: 1.6rem;
+}
+/* Used to remove white space from Award medal icon in progress-bar in Badge section */
+.awarded {
+  /* Note: Setting the height to be virtually non-existant 1px-5px
+  to avoid white space between progress bar and awards
+  -- Because the parent <ul> is positioned absolutely, this element is on its own plane
+  and I dont think it will cause any problems -- however I am uncertain if this is a good practice...
+  ... doesnt seem like it */
+  height: 5px;
+  margin-top: -0.15rem;
+  /* margin-left: 3.75rem; */
+  /* margin-right: -0.25rem; */
+  /* width: min-content; */
+}
+li.awarded {
+  margin-right: -0.25rem;
+  margin-left: 3.88rem;
+
+  /* margin-right: -4.5rem; */
+}
+.award-gold {
+  fill: #ffd700;
+  color: #ffd700;
+}
+.award-silver {
+  fill: #c0c0c0;
+  color: #c0c0c0;
+}
+.award-bronze {
+  fill: #cd7f32;
+  color: #cd7f32;
 }
 
 .list-group-ranking a {
