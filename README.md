@@ -67,4 +67,4 @@ Sincerely,
 Sonam Zahrt-Tenzin
 
 P.S.
-For a live demo of this 'app' interface visit : www.sonamzah.com/yardi/take-home
+For a live demo of this 'app' interface visit : www.sonamzah.com/yardi-takehome
