@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=!, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- BOOTSTRAP CSS CDN -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -20,15 +20,23 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/401650827d.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Yardi Systems</title>
   </head>
+
   <body>
-    <!-- todo:: override css... download?  -->
     <div class="container vh-100">
       <div class="row vh-100 align-items-center justify-content-center">
         <div class="col d-flex justify-content-center">
           <button
-            class="btn btn-primary"
+            class="btn btn-primary btn-app"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvas"
@@ -46,124 +54,1030 @@
       id="offcanvas"
       aria-labelledby="offcanvasLabel"
     >
-      <div id="offcanvas-content-wrap">
-        <!-- todo:: need to absolutely position this?? -->
-        <!-- From offcanv example 👇 -->
-        <!-- But need to KEEP 🤌 -->
+      <!-- TODO :: make this relative/absolute with BS classes -->
+      <!-- Relative content-wrapper to absolutely position close button  -->
+      <div class="position-relative" id="offcanvas-content-wrap">
+        <!-- Close button  -->
         <button
           type="button"
-          class="btn-close text-reset m-3"
+          class="btn-close text-reset m-3 position-absolute top-0 end-0"
           id="btn-close-offcanvas"
           data-bs-dismiss="offcanvas"
           aria-label="Close"
         ></button>
 
-        <!-- todo *** -->
-        <!-- TODO:: if working into the header doesnt work then you need to delete "offcanvas-header" and workwithin "offcanv-body" -->
-        <!-- todo *** -->
-
         <!-- Interface Header...  -->
-        <div class="container p-5 bg-primary">
-          <!-- Section: "Profile Header" -->
+        <div class="container p-4" id="headerContainer">
+          <!-- SECTION: "Profile Header" -->
           <div class="row">
             <!-- Profile pic - col  -->
-            <div class="col-4">
-              <p>profile img here!</p>
+            <div class="col-3">
+              <div class="profile-pic-wrap position-relative">
+                <i class="fas fa-splotch profile-icon-lg custom-red"></i>
+                <div class="profile-pic profile-pic-img-lg position-absolute">
+                  <img
+                    src="img/profile_user.jpg"
+                    class="img-fluid rounded-circle"
+                    alt="Profile picture"
+                  />
+                </div>
+              </div>
             </div>
             <!-- Profile summary - col -->
             <div class="col-8">
-              <div class="row"><div class="col">Name</div></div>
               <div class="row">
-                <div class="col">Stats DD</div>
-                <div class="col">Setz</div>
+                <div class="col">
+                  <h4 class="">John Smith</h4>
+                </div>
               </div>
-              <div class="row"><div class="col">level progress</div></div>
+              <div class="row">
+                <div class="col">
+                  <div class="user-status">
+                    <div class="dropdown">
+                      <button
+                        class="btn btn-outline-light dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        <i class="bi bi-circle-fill text-success"></i>
+                        Available
+                      </button>
+                      <ul
+                        class="dropdown-menu status-dropdown-menu"
+                        aria-labelledby="dropdownMenuButton1"
+                      >
+                        <li>
+                          <a
+                            class="dropdown-item"
+                            id="statusAvailable"
+                            href="#"
+                          >
+                            <i class="bi bi-circle-fill text-success"></i>
+                            Available</a
+                          >
+                        </li>
+                        <li>
+                          <a class="dropdown-item" id="statusBusy" href="#">
+                            <i class="bi bi-circle-fill text-danger"></i>
+                            Busy</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="">
+                    <a href="#" class="btn settings text-white" role="btn"
+                      ><i class="fas fa-user-cog"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-between">
+                <div class="mt-2 col-12">
+                  <div class="d-flex align-items-center">
+                    <div class="header-progress-label points-at-current-level">
+                      <p class="mb-0">30K</p>
+                    </div>
+                    <div class="progress w-100 mx-2">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 75%"
+                        aria-valuenow="75"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <div class="header-progress-label points-at-next-level">
+                      <p class="mb-0">40K</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-2 col-12 d-flex w-100 justify-content-between">
+                  <p>Level <span class="current-level">3</span></p>
+                  <p>Level <span class="next-level">4</span></p>
+                </div>
+              </div>
             </div>
           </div>
+          <!-- END SECTION: "Profile Header" -->
         </div>
 
-        <!-- todo:: Should I make many containers or just use rows... Not sure what best practice is -->
-        <!-- todo:: I think less containers == less code??  -->
-        <!-- todo:: But more separated code is nicer to read...  -->
+        <!-- Note: Should I make many containers or just use rows... Not sure what best practice is -->
+        <!-- Note: I think less containers == less code??  -->
+        <!-- Note: But more separated code is nicer to read...  -->
+
         <!-- Interface Content...  -->
         <div class="container">
           <!-- Section: "Points Summary" -->
-          <div class="row">
-            <!-- button group -->
-            <!-- or -->
+          <div class="row justify-content-center border-bottom p-2">
+            <div class="col-4 text-center">
+              <div class="rank-number fs-5">#3</div>
+              <div class="rank-label text-muted">
+                <span class="month">April</span> Rank
+              </div>
+            </div>
+            <div class="col-4 text-center border-start border-end">
+              <a
+                href="#"
+                class="popover-points-month text-decoration-none"
+                data-bs-toggle="popover"
+                data-bs-trigger="focus"
+                data-bs-html="true"
+                data-bs-placement="bottom"
+                data-bs-content="Error loading resource..."
+              >
+                <div class="points-number fs-5">
+                  400
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-chevron-down"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                    />
+                  </svg>
+                </div>
+                <div class="points-label text-muted">
+                  Points in <span class="month">April</span>
+                </div>
+              </a>
+            </div>
+            <div class="col-4 text-center">
+              <a
+                href="#"
+                class="text-decoration-none"
+                data-bs-toggle="popover"
+                data-bs-trigger="focus"
+                data-bs-placement="bottom"
+                data-bs-content="Bottom popover"
+              >
+                <div class="total-points-number fs-5">
+                  33.1 K
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-chevron-down"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                    />
+                  </svg>
+                </div>
+                <div class="total-points-label text-muted">Total Points</div>
+              </a>
+            </div>
             <!-- 3 columns 🤔 -->
-            <div class="col">
+            <!-- or -->
+            <!-- button group -->
+            <!-- <div class="col">
               <div
-                class="btn-group btn-group-lg me-2"
+                class="btn-group d-flex btn-group-lg me-2"
                 role="group"
                 aria-label="First group"
               >
-                <button type="button" class="btn btn-outline-secondary">
-                  1
-                </button>
-                <button type="button" class="btn btn-outline-secondary">
-                  2
-                </button>
-                <button type="button" class="btn btn-outline-secondary">
-                  3
+                <button type="button" class="btn text-center">
+                  <div class="rank-number fs-5">#3</div>
+                  <div class="rank-month text-muted">April Rank</div>
                 </button>
                 <button
                   type="button"
-                  class="btn btn-secondary"
+                  class="btn border-end border-start text-center"
                   data-bs-container="body"
                   data-bs-toggle="popover"
+                  data-bs-trigger="focus"
                   data-bs-placement="bottom"
                   data-bs-content="Bottom popover"
                 >
-                  4
+                  <div class="points-number fs-5">400 v</div>
+                  <div class="points-month text-muted">Points in April</div>
                 </button>
+                <button
+                  type="button"
+                  class="btn"
+                  data-bs-container="body"
+                  data-bs-toggle="popover"
+                  data-bs-trigger="focus"
+                  data-bs-placement="bottom"
+                  data-bs-content="#popover-content"
+                  data-html="true"
+                >
+                  <div class="total-points-number fs-5">33.1 K v</div>
+                  <div class="total-points-text text-muted">Total Points</div>
+                </button>
+              </div>
+            </div> -->
+          </div>
+
+          <!-- SECTION: "Badges" -->
+          <div class="container" id="badgesContainer">
+            <div class="row justify-content-between pt-4">
+              <div class="col-4">
+                <h5
+                  title="Close & reopen widget to refresh badge points earned (not functional)"
+                >
+                  Badges
+                </h5>
+              </div>
+              <div class="col-4">
+                <a
+                  class="toggle-details details-hidden"
+                  id="toggleDetails"
+                  data-bs-toggle="collapse"
+                  href=".collapse-details"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseDetails"
+                  >Show Details</a
+                >
+              </div>
+            </div>
+            <!-- Note: I was previously using list-group for the three Badge categories -->
+            <!-- Note: I changed this to individual rows to prevent the need for using a "container-fluid" within a "list-group-item" -->
+            <!-- Note: While this may be okay... it seems like unnecessary bloat to me -->
+
+            <!-- TODO:: ADD SELECTORS TO THE ROWS OR COLS so you can select the ."progress-bar" element and update widths-->
+            <!-- Leads and Follow Ups -->
+            <div class="row p-1" id="badgeLeadsRow">
+              <div class="col border rounded mx-2 py-3 px-3">
+                <h6 class="badge-title-leads mb-0">Leads & Follow-Ups</h6>
+                <!-- figure padding applied in styles.css -->
+                <figure class="figure mb-0 position-relative">
+                  <!-- custom "award-icon" progress bar overlay -->
+                  <!-- Note: dynamically created elements (js) have fontsize declared in style.css -->
+                  <ul class="progressbar-awards position-absolute top-0 end-0">
+                    <li class="progress-li progress-li-bronze" id="">
+                      <i class="far fa-circle award-bronze"></i>
+                    </li>
+                    <li class="progress-li progress-li-silver" id="">
+                      <i class="far fa-circle award-silver"></i>
+                    </li>
+                    <li class="progress-li progress-li-gold" id="">
+                      <i class="far fa-circle award-gold"></i>
+                    </li>
+                  </ul>
+                  <div class="progress mb-2">
+                    <div class="progress-bar leads-progress"></div>
+                  </div>
+                  <figcaption class="figure-caption pt-1">
+                    <p class="mb-0">
+                      <strong class="text-dark">48</strong> left to Bronze!
+                    </p>
+                  </figcaption>
+                </figure>
+                <!-- Collapse -- Leads details -->
+                <div
+                  class="row collapse collapse-details pt-2"
+                  id="collapseLeadsDetails"
+                >
+                  <div class="col-4">
+                    <p class="m-0">New Leads</p>
+                    <!-- TODO add class/ id to the numeber -->
+                    <p class="m-0">
+                      <strong
+                        class="details-number leads-details-number"
+                        id="newLeadsNum"
+                        >50</strong
+                      ><span class="text-muted">/50</span>
+                    </p>
+                  </div>
+                  <div class="col-4">
+                    <p class="m-0">Follow Ups</p>
+                    <p class="m-0">
+                      <strong
+                        class="details-number leads-details-number"
+                        id="followUpsNum"
+                        >50</strong
+                      ><span class="text-muted">/50</span>
+                    </p>
+                  </div>
+                  <div class="col-4">
+                    <p class="m-0">New Guest</p>
+                    <p class="m-0">
+                      <strong
+                        class="details-number leads-details-number"
+                        id="newGuestNum"
+                        >2</strong
+                      ><span class="text-muted">/50</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Appointments and Showings -->
+            <div class="row p-1" id="badgeApptsRow">
+              <div class="col border rounded mx-2 py-3 px-3">
+                <h6 class="badge-title-appts mb-0">Appointments & Showings</h6>
+                <!-- figure padding applied in styles.css -->
+                <figure class="figure mb-0 position-relative">
+                  <!-- custom "award-icon" progress bar overlay -->
+                  <!-- Note: dynamically created elements (js) have fontsize declared in style.css -->
+                  <ul class="progressbar-awards position-absolute top-0 end-0">
+                    <li class="progress-li progress-li-bronze" id="">
+                      <i class="far fa-circle award-bronze"></i>
+                    </li>
+                    <li class="progress-li progress-li-silver" id="">
+                      <i class="far fa-circle award-silver"></i>
+                    </li>
+                    <li class="progress-li progress-li-gold" id="">
+                      <i class="far fa-circle award-gold"></i>
+                    </li>
+                  </ul>
+                  <div class="progress mb-2">
+                    <div class="progress-bar appts-progress"></div>
+                  </div>
+                  <figcaption class="figure-caption pt-1">
+                    <p class="mb-0">
+                      <strong class="text-dark">48</strong> left to Gold!
+                    </p>
+                  </figcaption>
+                </figure>
+                <!-- Collapse -- Appointments details -->
+                <div
+                  class="row collapse collapse-details pt-2"
+                  id="collapseApptsDetails"
+                >
+                  <div class="col-4">
+                    <p class="m-0">Appointments</p>
+                    <p class="m-0">
+                      <strong
+                        class="details-number appts-details-number"
+                        id="apptsNum"
+                        >40</strong
+                      ><span class="text-muted">/40</span>
+                    </p>
+                  </div>
+                  <div class="col-4">
+                    <p class="m-0">Showings</p>
+                    <p class="m-0">
+                      <strong
+                        class="details-number appts-details-number"
+                        id="showingsNum"
+                        >30</strong
+                      ><span class="text-muted">/40</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Move-ins and Renewals  -->
+            <div class="row p-1" id="badgeMoveInsRow">
+              <div class="col border rounded mx-2 py-3 px-3">
+                <h6 class="badge-title-moveins mb-0">Move-ins & Renewals</h6>
+                <!-- figure padding applied in styles.css -->
+                <figure class="figure mb-0 position-relative">
+                  <!-- custom "award-icon" progress bar overlay -->
+                  <!-- Note: dynamically created elements (js) have fontsize declared in style.css -->
+                  <ul class="progressbar-awards position-absolute top-0 end-0">
+                    <li class="progress-li progress-li-bronze" id="">
+                      <i class="far fa-circle award-bronze"></i>
+                    </li>
+                    <li class="progress-li progress-li-silver" id="">
+                      <i class="far fa-circle award-silver"></i>
+                    </li>
+                    <li class="progress-li progress-li-gold" id="">
+                      <i class="far fa-circle award-gold"></i>
+                    </li>
+                  </ul>
+                  <div class="progress mb-2">
+                    <div class="progress-bar moveins-progress"></div>
+                  </div>
+                  <figcaption class="figure-caption pt-1">
+                    <p class="mb-0">
+                      <strong class="text-dark">48</strong> left to Silver!
+                    </p>
+                  </figcaption>
+                </figure>
+                <!-- Collapse -- Move-ins / Renewals details -->
+                <div
+                  class="row collapse collapse-details pt-2"
+                  id="collapseMoveInsDetails"
+                >
+                  <div class="col-4">
+                    <p class="m-0">Renewals</p>
+                    <p class="m-0">
+                      <strong
+                        class="details-number moveins-details-number"
+                        id="renewalsNum"
+                        >3</strong
+                      ><span class="text-muted">/20</span>
+                    </p>
+                  </div>
+                  <div class="col-4">
+                    <p class="m-0">Move Ins</p>
+                    <p class="m-0">
+                      <strong
+                        class="details-number moveins-details-number"
+                        id="moveInsNum"
+                        >0</strong
+                      ><span class="text-muted">/20</span>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+          <!-- END SECTION: "Badges" -->
 
-          <!-- Section: "Badges" -->
-          <div class="row justify-content-between">
-            <div class="col-4"><h5>Badges</h5></div>
-            <div class="col-4"><a class="" href="">Show Details</a></div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <ul class="list-group">
-                <li class="list-group-item border rounded my-1">la</li>
-                <li class="list-group-item border rounded my-1">
-                  A second item
-                </li>
-                <li class="list-group-item border rounded my-1">
-                  A third item
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Section: "Ranking" -->
-          <div class="row">
+          <!-- SECTION: "Ranking" -->
+          <div class="row pt-5">
             <div class="col">
               <h5>April Ranking</h5>
             </div>
           </div>
           <div class="row">
             <div class="col">
-              <ul class="list-group">
-                <li class="list-group-item border rounded my-1">
-                  collapse w table
-                </li>
-                <li class="list-group-item border rounded my-1">
-                  collapse w table
-                </li>
-                <li class="list-group-item border rounded my-1">
-                  collapse w table
-                </li>
-              </ul>
+              <div class="list-group list-group-ranking border rounded-0">
+                <a
+                  class="
+                    list-group-item
+                    ranking-item
+                    text-decoration-none
+                    position-relative
+                  "
+                  id="collapseLinkOne"
+                  data-bs-toggle="collapse"
+                  href="#collapseRankOne"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseRanking"
+                >
+                  <!-- User Rank 1 -->
+                  <span
+                    class="
+                      badge
+                      bg-light
+                      text-dark
+                      rounded-0
+                      position-absolute
+                      top-0
+                      start-0
+                    "
+                    >1</span
+                  >
+                  <div class="d-flex justify-content-between px-2">
+                    <div
+                      class="
+                        user-content
+                        d-flex
+                        justify-content-center
+                        align-items-center
+                      "
+                    >
+                      <div class="profile-pic-wrap px-2 position-relative">
+                        <i
+                          class="fas fa-splotch profile-icon-sm custom-green"
+                        ></i>
+                        <div class="profile-pic position-absolute">
+                          <h6 class="">EG</h6>
+                        </div>
+                      </div>
+                      <div><p class="ms-2 mb-0">Eden Gardean</p></div>
+                    </div>
+                    <div
+                      class="
+                        user-points
+                        d-flex
+                        justify-content-center
+                        align-items-center
+                      "
+                    >
+                      <small class="text-muted">670 pts</small>
+                    </div>
+                  </div>
+
+                  <!-- Collapse -- First Rank Stats -->
+                  <div class="collapse" id="collapseRankOne">
+                    <div class="w-100 bg-white mt-2 px-4 py-3">
+                      <div
+                        class="rank-medals pb-3 mb-3 border-bottom"
+                        id="medalsRankOne"
+                      >
+                        <div class="rank-leads">
+                          <!-- Note -- Method 1 - on page svg -->
+                          <!-- <object
+                            class="award award-bronze"
+                            type="image/svg+xml"
+                            data="img/award.svg"
+                          >
+                            Your browser does not support SVG
+                          </object> -->
+                          <!-- Note -- Method 2 (works mostly) - on page svg-->
+                          <!-- <div class="svg-wrap"> -->
+                          <!--  <svg class="svg-el" viewBox="0 0 24 24">
+                                  <use
+                                    class="award award-gold"
+                                    xlink:href="#award"
+                                  ></use>
+                                </svg> -->
+                          <!-- </div> -->
+                          <!-- Note -- I could not get the above to work very well -->
+
+                          <!-- NOTE --  Method 3 - using font icon -->
+                          <!-- <i class="fas fa-award award-gold fs-5"></i> -->
+                          <i class="bi bi-award-fill award-bronze fs-5"></i>
+                          <span class="">Leads & Follow ups</span>
+                        </div>
+                        <div class="rank-appts">
+                          <i class="bi bi-award-fill award-silver fs-5"></i>
+                          <span class="">Appointments & Showings</span>
+                        </div>
+                        <div class="rank-moveins">
+                          <i class="bi bi-award-fill award-bronze fs-5"></i>
+                          <span class="">Move-ins & Renewals</span>
+                        </div>
+                      </div>
+                      <table class="w-100 table-custom" id="tableRankOne">
+                        <thead>
+                          <tr>
+                            <th scope="col">Point Summary</th>
+                            <th scope="col">Points</th>
+                          </tr>
+                        </thead>
+                        <!-- First Rank Points Summary Table -->
+                        <tbody>
+                          <!-- Row 1 -->
+                          <tr>
+                            <!-- TODO:: Uniformize all the tds using the first one! -->
+                            <td>
+                              <div
+                                class="
+                                  constrain-td-width
+                                  d-flex
+                                  justify-content-start
+                                "
+                              >
+                                <div
+                                  class="
+                                    d-flex
+                                    align-items-center
+                                    justify-content-center
+                                    category-count
+                                    shaded
+                                    rounded-circle
+                                    text-center
+                                  "
+                                >
+                                  <p>15</p>
+                                </div>
+                                <div
+                                  class="
+                                    d-flex
+                                    align-items-center
+                                    justify-content-center
+                                    category-name
+                                    ms-1
+                                  "
+                                >
+                                  <p class="ps-2">New Leads / Prospects</p>
+                                </div>
+                              </div>
+                            </td>
+                            <td class="points points-leads-count text-center">
+                              75
+                            </td>
+                          </tr>
+                          <!-- Row 2 -->
+                          <tr>
+                            <td>
+                              <div
+                                class="
+                                  constrain-td-width
+                                  d-flex
+                                  justify-content-start
+                                "
+                              >
+                                <div
+                                  class="
+                                    d-flex
+                                    align-items-center
+                                    justify-content-center
+                                    category-count
+                                    shaded
+                                    rounded-circle
+                                    text-center
+                                  "
+                                >
+                                  <p>7</p>
+                                </div>
+                                <div
+                                  class="
+                                    d-flex
+                                    align-items-center
+                                    justify-content-center
+                                    category-name
+                                    ms-1
+                                  "
+                                >
+                                  <p class="ps-2">Convert Leads to Lease</p>
+                                </div>
+                              </div>
+                            </td>
+                            <td
+                              class="points points-conversion-count text-center"
+                            >
+                              20
+                            </td>
+                          </tr>
+                          <!-- Row 3 -->
+                          <tr>
+                            <td>
+                              <div
+                                class="
+                                  constrain-td-width
+                                  d-flex
+                                  justify-content-start
+                                "
+                              >
+                                <div
+                                  class="
+                                    d-flex
+                                    align-items-center
+                                    justify-content-center
+                                    category-count
+                                    shaded
+                                    rounded-circle
+                                    text-center
+                                  "
+                                >
+                                  <p>4</p>
+                                </div>
+                                <div
+                                  class="
+                                    d-flex
+                                    align-items-center
+                                    justify-content-center
+                                    category-name
+                                    ms-1
+                                  "
+                                >
+                                  <p class="ps-2">Follow-Ups</p>
+                                </div>
+                              </div>
+                            </td>
+                            <td
+                              class="points points-followups-count text-center"
+                            >
+                              16
+                            </td>
+                          </tr>
+                          <!-- Row 4 -->
+                          <tr>
+                            <td>
+                              <div
+                                class="
+                                  constrain-td-width
+                                  d-flex
+                                  justify-content-start
+                                "
+                              >
+                                <div
+                                  class="
+                                    d-flex
+                                    align-items-center
+                                    justify-content-center
+                                    category-count
+                                    shaded
+                                    rounded-circle
+                                    text-center
+                                  "
+                                >
+                                  <p>17</p>
+                                </div>
+                                <div
+                                  class="
+                                    d-flex
+                                    align-items-center
+                                    justify-content-center
+                                    category-name
+                                    ms-1
+                                  "
+                                >
+                                  <p class="ps-2">Unit Shows</p>
+                                </div>
+                              </div>
+                            </td>
+                            <td class="points points-shows-count text-center">
+                              04
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  class="
+                    list-group-item
+                    ranking-item
+                    text-decoration-none
+                    position-relative
+                  "
+                  id="collapseLinkTwo"
+                  data-bs-toggle="collapse"
+                  href="#collapseRankTwo"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseRanking"
+                >
+                  <!-- User Rank 2 -->
+                  <span
+                    class="
+                      badge
+                      bg-light
+                      text-dark
+                      rounded-0
+                      position-absolute
+                      top-0
+                      start-0
+                    "
+                    >2</span
+                  >
+                  <div class="d-flex justify-content-between px-2">
+                    <div
+                      class="
+                        user-content
+                        d-flex
+                        justify-content-center
+                        align-items-center
+                      "
+                    >
+                      <div class="profile-pic-wrap px-2 position-relative">
+                        <i
+                          class="fas fa-splotch profile-icon-sm custom-red"
+                        ></i>
+                        <div class="profile-pic position-absolute">
+                          <h6 class="">JD</h6>
+                        </div>
+                      </div>
+                      <div>
+                        <p class="ms-2 mb-0">Jonson David</p>
+                      </div>
+                    </div>
+                    <div
+                      class="
+                        user-points
+                        d-flex
+                        justify-content-center
+                        align-items-center
+                      "
+                    >
+                      <small class="text-muted">530 pts</small>
+                    </div>
+                  </div>
+
+                  <!-- Collapse -- Second Rank Stats -->
+                  <div class="collapse" id="collapseRankTwo">
+                    <div class="w-100 bg-white mt-2 px-4 py-3">
+                      <div
+                        class="rank-medals pb-3 mb-3 border-bottom"
+                        id="medalsRankTwo"
+                      >
+                        <div class="rank-leads">
+                          <i class="bi bi-award-fill award-bronze fs-5"></i>
+                          <span class="">Leads & Follow ups</span>
+                        </div>
+                        <div class="rank-appts">
+                          <i class="bi bi-award-fill award-silver fs-5"></i>
+                          <span class="">Appointments & Showings</span>
+                        </div>
+                        <div class="rank-moveins">
+                          <i class="bi bi-award-fill award-bronze fs-5"></i>
+                          <span class="">Move-ins & Renewals</span>
+                        </div>
+                      </div>
+                      <table class="table" id="tableRankTwo">
+                        <!-- Inject table here! -->
+                        <p class="mb-0 fs-5">
+                          Inject table dynamically with JS after making API
+                          call!
+                        </p>
+                      </table>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  class="
+                    current-user
+                    list-group-item
+                    ranking-item
+                    text-decoration-none
+                    position-relative
+                  "
+                  data-bs-toggle="collapse"
+                  id="collapseLinkThree"
+                  href="#collapseRankThree"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseRanking"
+                >
+                  <!-- User Rank 3 -->
+                  <span
+                    class="
+                      badge
+                      bg-light
+                      text-dark
+                      rounded-0
+                      position-absolute
+                      top-0
+                      start-0
+                    "
+                    >3</span
+                  >
+                  <div class="d-flex justify-content-between px-2">
+                    <div
+                      class="
+                        user-content
+                        d-flex
+                        justify-content-center
+                        align-items-center
+                      "
+                    >
+                      <div class="profile-pic-wrap px-2 position-relative">
+                        <i
+                          class="fas fa-splotch profile-icon-sm custom-green"
+                        ></i>
+                        <div
+                          class="
+                            profile-pic profile-pic-img-sm
+                            position-absolute
+                          "
+                        >
+                          <img
+                            src="img/profile_user.jpg"
+                            class="img-fluid rounded-circle"
+                            alt="image failed to load"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <p class="ms-2 mb-0">John Smith (you)</p>
+                      </div>
+                    </div>
+                    <div
+                      class="
+                        user-points
+                        d-flex
+                        justify-content-center
+                        align-items-center
+                      "
+                    >
+                      <small class="text-muted">525 pts</small>
+                    </div>
+                  </div>
+                  <!-- Collapse -- Third Rank Stats -->
+                  <div class="collapse" id="collapseRankThree">
+                    <div class="w-100 bg-white mt-2 px-4 py-3">
+                      <div
+                        class="rank-medals pb-3 mb-3 border-bottom"
+                        id="medalRankThree"
+                      >
+                        <div class="rank-leads">
+                          <i class="bi bi-award-fill award-bronze fs-5"></i>
+                          <span class="">Leads & Follow ups</span>
+                        </div>
+                        <div class="rank-appts">
+                          <i class="bi bi-award-fill award-silver fs-5"></i>
+                          <span class="">Appointments & Showings</span>
+                        </div>
+                        <div class="rank-moveins">
+                          <i class="bi bi-award-fill award-bronze fs-5"></i>
+                          <span class="">Move-ins & Renewals</span>
+                        </div>
+                      </div>
+                      <table
+                        class="table table-current-user"
+                        id="tableRankThree"
+                      >
+                        <!-- Inject table here! -->
+                        <p class="mb-0 fs-5">
+                          Inject table dynamically with JS after making API
+                          call!
+                        </p>
+                      </table>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  class="
+                    list-group-item
+                    ranking-item
+                    text-decoration-none
+                    position-relative
+                  "
+                  data-bs-toggle="collapse"
+                  id="collapseLinkFour"
+                  href="#collapseRankFour"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseRanking"
+                >
+                  <!-- User Rank 4 -->
+                  <span
+                    class="
+                      badge
+                      bg-light
+                      text-dark
+                      rounded-0
+                      position-absolute
+                      top-0
+                      start-0
+                    "
+                    >4</span
+                  >
+                  <div class="d-flex justify-content-between px-2">
+                    <div
+                      class="
+                        user-content
+                        d-flex
+                        justify-content-center
+                        align-items-center
+                      "
+                    >
+                      <div class="profile-pic-wrap px-2 position-relative">
+                        <i
+                          class="fas fa-splotch profile-icon-sm custom-red"
+                        ></i>
+                        <div class="profile-pic position-absolute">
+                          <h6 class="">DW</h6>
+                        </div>
+                      </div>
+                      <div>
+                        <p class="ms-2 mb-0">David Warnar</p>
+                      </div>
+                    </div>
+                    <div
+                      class="
+                        user-points
+                        d-flex
+                        justify-content-center
+                        align-items-center
+                      "
+                    >
+                      <small class="text-muted">490 pts</small>
+                    </div>
+                  </div>
+                  <!-- Collapse -- Fourth Rank Stats -->
+                  <div class="collapse" id="collapseRankFour">
+                    <div class="w-100 bg-white mt-2 px-4 py-3">
+                      <div
+                        class="rank-medals pb-3 mb-3 border-bottom"
+                        id="medalsRankFour"
+                      >
+                        <div class="rank-leads">
+                          <i class="bi bi-award-fill award-bronze fs-5"></i>
+                          <span class="">Leads & Follow ups</span>
+                        </div>
+                        <div class="rank-appts">
+                          <i class="bi bi-award-fill award-silver fs-5"></i>
+                          <span class="">Appointments & Showings</span>
+                        </div>
+                        <div class="rank-moveins">
+                          <i class="bi bi-award-fill award-bronze fs-5"></i>
+                          <span class="">Move-ins & Renewals</span>
+                        </div>
+                      </div>
+                      <table class="table" id="tableRankFour">
+                        <!-- Inject table here! -->
+                        <p class="mb-0 fs-5">
+                          Inject table dynamically with JS after making API
+                          call!
+                        </p>
+                      </table>
+                    </div>
+                  </div></a
+                >
+              </div>
             </div>
           </div>
+          <!-- END SECTION: "Ranking" -->
         </div>
+        <!-- END SECTION: Container -- Body Content -->
       </div>
+      <!-- END SECTION: Offcanvas-content-wrap -->
     </div>
+    <!-- END SECTION: Offcanvas div element -->
+
+    <!-- todo:: remove -->
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Bootstrap min js bundle (includes Popper) -->
     <script
@@ -172,9 +1086,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- todo *** -->
-    <!-- TODO::: Figure out how to initialize popovers -- probably best to use the custom container method -->
-    <!-- todo *** -->
+    <!-- initialize Popovers -->
     <script>
       var popoverTriggerList = [].slice.call(
         document.querySelectorAll('[data-bs-toggle="popover"]')
@@ -183,5 +1095,6 @@
         return new bootstrap.Popover(popoverTriggerEl);
       });
     </script>
+    <script src="js/index.js"></script>
   </body>
 </html>

@@ -1,13 +1,162 @@
 body {
   font-family: "Open Sans", sans-serif;
+  box-sizing: content-box;
+}
+
+#offcanvas {
+  width: 100%;
 }
 
 #offcanvas-content-wrap {
-  position: relative;
+  overflow: scroll;
 }
 
-#btn-close-offcanvas {
-  position: absolute;
-  top: 0;
-  right: 0;
+#headerContainer {
+  background: linear-gradient(rgba(1, 4, 46, 0.74), rgba(1, 4, 46, 0.74)),
+    url("img/profile-bg.jpg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+/* custom "award icon" list elements for progress bar */
+.progressbar-awards li {
+  list-style-type: none;
+  border-radius: 100%;
+  background-color: white;
+  margin-left: 4rem;
+  float: left;
+  font-size: 1.25rem;
+}
+.progressbar-awards li .award {
+  font-size: 1.45rem;
+}
+
+.profile-pic-wrap {
+  /* text-align: center; */
+}
+.profile-pic-wrap h6 {
+  margin-bottom: 0;
+}
+.profile-icon-sm {
+  font-size: 3.5rem;
+}
+.profile-icon-lg {
+  font-size: 6rem;
+}
+.profile-pic {
+  text-align: center;
+  color: white;
+  width: 30px;
+  height: 18px;
+  left: 50%;
+  top: 50%;
+  margin-left: -15px;
+  margin-top: -9px;
+}
+
+.profile-pic-img-sm {
+  width: 36px;
+  height: 36px;
+  left: 50%;
+  top: 50%;
+  margin-left: -18px;
+  margin-top: -18px;
+}
+.profile-pic-img-lg {
+  width: 60px;
+  height: 60px;
+  left: 50%;
+  top: 50%;
+  margin-left: -30px;
+  margin-top: -30px;
+}
+.profile-pic-img img {
+  width: inherit;
+}
+
+/* Used to remove white space from Award medal icon in progress-bar in Badge section */
+.awarded {
+  /* Note: Setting the height to be virtually non-existant 
+  to avoid white space between progress bar and awards
+  -- Because the parent <ul> is positioned absolutely, this element is on its own plane
+  and I dont think it will cause any problems -- however I am uncertain if this is a good practice...
+  ... doesnt seem like it */
+  height: 1px;
+}
+.award-gold {
+  fill: #ffd700;
+  color: #ffd700;
+}
+.award-silver {
+  fill: #c0c0c0;
+  color: #c0c0c0;
+}
+.award-bronze {
+  fill: #cd7f32;
+  color: #cd7f32;
+}
+
+/* progress bar */
+.figure {
+  width: 100%;
+  padding-top: 0.655rem;
+}
+/* bootstrap progress element */
+.progress {
+  height: 8px;
+}
+.progress-bar {
+  /* Bronze */
+  /* width: 60%; */
+
+  /* Silver */
+  /* width: 80%; */
+
+  /* Gold */
+  /* width: 96%; */
+}
+
+.list-group-ranking a {
+  color: #424242;
+}
+.user-content .d-inline-block {
+  height: 100%;
+  margin-top: 0;
+}
+
+.table-custom td {
+  padding: 0.35rem 0;
+}
+table p {
+  margin-bottom: 0;
+}
+.category-count {
+  height: 36px;
+  width: 36px;
+}
+
+/* Utilities */
+.dotted {
+}
+
+/* Colors */
+.shaded {
+  background-color: #eeeeee;
+}
+/* text colors */
+.custom-red {
+  color: #d84315;
+}
+.custom-green {
+  color: #1b5e20;
+  opacity: 0.8;
+}
+/* *** NEED TO OVERRIDE THE ACTIVE STYLES FOR THE RANKING COLLAPSE STUFF */
+
+/* Media Query */
+@media (min-width: 576px) {
+  #offcanvas {
+    width: 500px;
+  }
 }
