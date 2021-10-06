@@ -1,20 +1,26 @@
+// APP
+let initialized = false;
 // CONFIG
 const WIDTH_BRONZE = 60;
 const WIDTH_SILVER = 80;
 const WIDTH_GOLD = 96;
 // Pretend these are coming from a data base through an async API call
-const USER_LEADS_PROG = 30;
-const USER_APPTS_PROG = 85;
-const USER_MOVEINS_PROG = 63;
+const USER_LEADS_PROG = 32;
+// const USER_LEADS_PROG = 0;
+const USER_APPTS_PROG = 83;
+// const USER_APPTS_PROG = 0;
+const USER_MOVEINS_PROG = 62;
+// const USER_MOVEINS_PROG = 0;
 
 //----------
 // Globals
 //----------
+const appButton = document.querySelector(".btn-app");
 const statusDropdownButton = document.querySelector("#dropdownMenuButton1");
 const statusDropdownMenu = document.querySelector(".status-dropdown-menu");
 const popoverPointsInMonth = document.querySelector(".popover-points-month");
 const toggleDetails = document.querySelector("#toggleDetails");
-const badgesContainer = document.querySelector("#badgesContainer");
+const progBars = [...document.querySelectorAll(".progress-bar-badge")];
 
 const rankingListGroup = document.querySelector(".list-group-ranking");
 
@@ -292,41 +298,43 @@ const leadProgressBar = document
 
 // Not very good for performance -- looks like it fires every time one pixel resize occurs
 let resizeObserver = new ResizeObserver((obs) => {
-  console.log("observing:", obs);
-  const [entry] = obs;
+  // console.log("observing:", obs);
+  obs.forEach((entry) => {
+    // const [entry] = ob;
 
-  // Next 3 lines can be abstracted
-  const width = entry.contentRect.width;
-  const parentWidth = entry.target.offsetParent.getBoundingClientRect().width;
-  const widthPercent = Math.ceil((100 * width) / parentWidth);
+    // Next 3 lines can be abstracted
+    const width = entry.contentRect.width;
+    const parentWidth = entry.target.offsetParent.getBoundingClientRect().width;
+    const widthPercent = Math.ceil((100 * width) / parentWidth);
 
-  // Check if getting bigger
-  const parent = entry.target.closest(".figure");
+    // Check if getting bigger
+    const parent = entry.target.closest(".figure");
 
-  if (widthPercent > WIDTH_BRONZE) {
-    const listAwardBronze = parent.querySelector(".progress-li-bronze");
-    // add class awarded to the changed list-item
-    listAwardBronze.classList.add("awarded");
-    // change the icon from circle to award
-    listAwardBronze.innerHTML = `<i class="bi bi-award-fill award award-bronze"></i>`;
-  }
-  if (widthPercent > WIDTH_SILVER) {
-    const listAwardSilver = parent.querySelector(".progress-li-silver");
-    // add class awarded to the changed list-item
-    listAwardSilver.classList.add("awarded");
-    // change the icon from circle to award
-    listAwardSilver.innerHTML = `<i class="bi bi-award-fill award award-silver"></i>`;
-  }
-  if (widthPercent > WIDTH_GOLD) {
-    const listAwardGold = parent.querySelector(".progress-li-gold");
-    // add class awarded to the changed list-item
-    listAwardGold.classList.add("awarded");
-    // change the icon from circle to award
-    listAwardGold.innerHTML = `<i class="bi bi-award-fill award award-gold"></i>`;
-  }
+    if (widthPercent > WIDTH_BRONZE) {
+      const listAwardBronze = parent.querySelector(".progress-li-bronze");
+      // add class awarded to the changed list-item
+      listAwardBronze.classList.add("awarded");
+      // change the icon from circle to award
+      listAwardBronze.innerHTML = `<i class="bi bi-award-fill award award-bronze"></i>`;
+    }
+    if (widthPercent > WIDTH_SILVER) {
+      const listAwardSilver = parent.querySelector(".progress-li-silver");
+      // add class awarded to the changed list-item
+      listAwardSilver.classList.add("awarded");
+      // change the icon from circle to award
+      listAwardSilver.innerHTML = `<i class="bi bi-award-fill award award-silver"></i>`;
+    }
+    if (widthPercent > WIDTH_GOLD) {
+      const listAwardGold = parent.querySelector(".progress-li-gold");
+      // add class awarded to the changed list-item
+      listAwardGold.classList.add("awarded");
+      // change the icon from circle to award
+      listAwardGold.innerHTML = `<i class="bi bi-award-fill award award-gold"></i>`;
+    }
 
-  // Check if getting smaller
-  // For this project Im going to assume that points wont reverse
+    // Check if getting smaller
+    // For this project Im going to assume that points are not reversable
+  });
 });
 
 // Mock get badge ranks from API
@@ -352,16 +360,16 @@ rankingListGroup.addEventListener("click", (e) => {
 
 //TODO -- Remove this later
 document.querySelector(".settings").addEventListener("click", () => {
-  updateProgressBar(leadProgressBar, 10);
-  updateProgressBar(badgesContainer.querySelector(".moveins-progress"), 32);
+  progBars.forEach((prog) => {
+    updateProgressBar(prog, 10);
+  });
 });
 
 //Initialize variables
 const init = function () {
-  console.log("iffy running");
+  console.log("init() running");
   // setBadgeFrom API
   const badgeData = fakeGetBadgeDataAPI();
-  const progBars = [...badgesContainer.querySelectorAll(".progress-bar")];
 
   console.log(progBars.length, progBars);
   // definitely not a pretty way to do all this...
@@ -369,6 +377,7 @@ const init = function () {
   progBars.forEach((prog) => {
     // resizeObserver.observe(leadProgressBar);
     resizeObserver.observe(prog);
+
     if (prog.classList.contains("leads-progress")) {
       console.log("prog: ", prog);
       console.log("badgeLeads: ", badgeData.leads);
@@ -387,4 +396,9 @@ const init = function () {
   });
 };
 
-init();
+// init()
+appButton.addEventListener("click", () => {
+  if (initialized) return;
+  setTimeout(init, 300);
+  initialized = true;
+});

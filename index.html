@@ -283,213 +283,219 @@
           </div>
 
           <!-- SECTION: "Badges" -->
-          <div class="container" id="badgesContainer">
-            <div class="row justify-content-between pt-4">
-              <div class="col-4">
-                <h5
-                  title="Close & reopen widget to refresh badge points earned (not functional)"
-                >
-                  Badges
-                </h5>
-              </div>
-              <div class="col-4">
-                <a
-                  class="toggle-details details-hidden"
-                  id="toggleDetails"
-                  data-bs-toggle="collapse"
-                  href=".collapse-details"
-                  role="button"
-                  aria-expanded="false"
-                  aria-controls="collapseDetails"
-                  >Show Details</a
-                >
-              </div>
+          <!-- <div class="container" id="badgesContainer"> -->
+          <div class="row justify-content-between pt-4">
+            <div class="col-4">
+              <h5
+                title="Close & reopen widget to refresh badge points earned (not functional)"
+              >
+                Badges
+              </h5>
             </div>
-            <!-- Note: I was previously using list-group for the three Badge categories -->
-            <!-- Note: I changed this to individual rows to prevent the need for using a "container-fluid" within a "list-group-item" -->
-            <!-- Note: While this may be okay... it seems like unnecessary bloat to me -->
+            <div class="col-4">
+              <a
+                class="toggle-details details-hidden"
+                id="toggleDetails"
+                data-bs-toggle="collapse"
+                href=".collapse-details"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseDetails"
+                >Show Details</a
+              >
+            </div>
+          </div>
+          <!-- Note: I was previously using list-group for the three Badge categories -->
+          <!-- Note: I changed this to individual rows to prevent the need for using a "container-fluid" within a "list-group-item" -->
+          <!-- Note: While this may be okay... it seems like unnecessary bloat to me -->
 
-            <!-- TODO:: ADD SELECTORS TO THE ROWS OR COLS so you can select the ."progress-bar" element and update widths-->
-            <!-- Leads and Follow Ups -->
-            <div class="row p-1" id="badgeLeadsRow">
-              <div class="col border rounded mx-2 py-3 px-3">
-                <h6 class="badge-title-leads mb-0">Leads & Follow-Ups</h6>
-                <!-- figure padding applied in styles.css -->
-                <figure class="figure mb-0 position-relative">
-                  <!-- custom "award-icon" progress bar overlay -->
-                  <!-- Note: dynamically created elements (js) have fontsize declared in style.css -->
-                  <ul class="progressbar-awards position-absolute top-0 end-0">
-                    <li class="progress-li progress-li-bronze" id="">
-                      <i class="far fa-circle award-bronze"></i>
-                    </li>
-                    <li class="progress-li progress-li-silver" id="">
-                      <i class="far fa-circle award-silver"></i>
-                    </li>
-                    <li class="progress-li progress-li-gold" id="">
-                      <i class="far fa-circle award-gold"></i>
-                    </li>
-                  </ul>
-                  <div class="progress mb-2">
-                    <div class="progress-bar leads-progress"></div>
-                  </div>
-                  <figcaption class="figure-caption pt-1">
-                    <p class="mb-0">
-                      <strong class="text-dark">48</strong> left to Bronze!
-                    </p>
-                  </figcaption>
-                </figure>
-                <!-- Collapse -- Leads details -->
-                <div
-                  class="row collapse collapse-details pt-2"
-                  id="collapseLeadsDetails"
-                >
-                  <div class="col-4">
-                    <p class="m-0">New Leads</p>
-                    <!-- TODO add class/ id to the numeber -->
-                    <p class="m-0">
-                      <strong
-                        class="details-number leads-details-number"
-                        id="newLeadsNum"
-                        >50</strong
-                      ><span class="text-muted">/50</span>
-                    </p>
-                  </div>
-                  <div class="col-4">
-                    <p class="m-0">Follow Ups</p>
-                    <p class="m-0">
-                      <strong
-                        class="details-number leads-details-number"
-                        id="followUpsNum"
-                        >50</strong
-                      ><span class="text-muted">/50</span>
-                    </p>
-                  </div>
-                  <div class="col-4">
-                    <p class="m-0">New Guest</p>
-                    <p class="m-0">
-                      <strong
-                        class="details-number leads-details-number"
-                        id="newGuestNum"
-                        >2</strong
-                      ><span class="text-muted">/50</span>
-                    </p>
-                  </div>
+          <!-- TODO:: ADD SELECTORS TO THE ROWS OR COLS so you can select the ."progress-bar" element and update widths-->
+          <!-- Leads and Follow Ups -->
+          <div class="row p-1" id="badgeLeadsRow">
+            <div class="col border rounded mx-2 p-3">
+              <h6 class="badge-title-leads mb-0">Leads & Follow-Ups</h6>
+              <!-- figure padding applied in styles.css -->
+              <figure class="figure mb-0 position-relative">
+                <!-- custom "award-icon" progress bar overlay -->
+                <!-- Note: I defined the fontsize of most dynamically created elements (js) in style.css -->
+                <ul class="progressbar-awards position-absolute top-0 end-0">
+                  <li class="progress-li progress-li-bronze" id="">
+                    <i class="far fa-circle award-bronze"></i>
+                  </li>
+                  <li class="progress-li progress-li-silver" id="">
+                    <i class="far fa-circle award-silver"></i>
+                  </li>
+                  <li class="progress-li progress-li-gold" id="">
+                    <i class="far fa-circle award-gold"></i>
+                  </li>
+                </ul>
+                <div class="progress mb-2">
+                  <div
+                    class="progress-bar progress-bar-badge leads-progress"
+                  ></div>
                 </div>
-              </div>
-            </div>
-            <!-- Appointments and Showings -->
-            <div class="row p-1" id="badgeApptsRow">
-              <div class="col border rounded mx-2 py-3 px-3">
-                <h6 class="badge-title-appts mb-0">Appointments & Showings</h6>
-                <!-- figure padding applied in styles.css -->
-                <figure class="figure mb-0 position-relative">
-                  <!-- custom "award-icon" progress bar overlay -->
-                  <!-- Note: dynamically created elements (js) have fontsize declared in style.css -->
-                  <ul class="progressbar-awards position-absolute top-0 end-0">
-                    <li class="progress-li progress-li-bronze" id="">
-                      <i class="far fa-circle award-bronze"></i>
-                    </li>
-                    <li class="progress-li progress-li-silver" id="">
-                      <i class="far fa-circle award-silver"></i>
-                    </li>
-                    <li class="progress-li progress-li-gold" id="">
-                      <i class="far fa-circle award-gold"></i>
-                    </li>
-                  </ul>
-                  <div class="progress mb-2">
-                    <div class="progress-bar appts-progress"></div>
-                  </div>
-                  <figcaption class="figure-caption pt-1">
-                    <p class="mb-0">
-                      <strong class="text-dark">48</strong> left to Gold!
-                    </p>
-                  </figcaption>
-                </figure>
-                <!-- Collapse -- Appointments details -->
-                <div
-                  class="row collapse collapse-details pt-2"
-                  id="collapseApptsDetails"
-                >
-                  <div class="col-4">
-                    <p class="m-0">Appointments</p>
-                    <p class="m-0">
-                      <strong
-                        class="details-number appts-details-number"
-                        id="apptsNum"
-                        >40</strong
-                      ><span class="text-muted">/40</span>
-                    </p>
-                  </div>
-                  <div class="col-4">
-                    <p class="m-0">Showings</p>
-                    <p class="m-0">
-                      <strong
-                        class="details-number appts-details-number"
-                        id="showingsNum"
-                        >30</strong
-                      ><span class="text-muted">/40</span>
-                    </p>
-                  </div>
+                <figcaption class="figure-caption pt-1">
+                  <p class="mb-0">
+                    <strong class="text-dark">48</strong> left to Bronze!
+                  </p>
+                </figcaption>
+              </figure>
+              <!-- Collapse -- Leads details -->
+              <div
+                class="row collapse collapse-details pt-2"
+                id="collapseLeadsDetails"
+              >
+                <div class="col-4">
+                  <p class="m-0">New Leads</p>
+                  <!-- TODO add class/ id to the numeber -->
+                  <p class="m-0">
+                    <strong
+                      class="details-number leads-details-number"
+                      id="newLeadsNum"
+                      >50</strong
+                    ><span class="text-muted">/50</span>
+                  </p>
                 </div>
-              </div>
-            </div>
-            <!-- Move-ins and Renewals  -->
-            <div class="row p-1" id="badgeMoveInsRow">
-              <div class="col border rounded mx-2 py-3 px-3">
-                <h6 class="badge-title-moveins mb-0">Move-ins & Renewals</h6>
-                <!-- figure padding applied in styles.css -->
-                <figure class="figure mb-0 position-relative">
-                  <!-- custom "award-icon" progress bar overlay -->
-                  <!-- Note: dynamically created elements (js) have fontsize declared in style.css -->
-                  <ul class="progressbar-awards position-absolute top-0 end-0">
-                    <li class="progress-li progress-li-bronze" id="">
-                      <i class="far fa-circle award-bronze"></i>
-                    </li>
-                    <li class="progress-li progress-li-silver" id="">
-                      <i class="far fa-circle award-silver"></i>
-                    </li>
-                    <li class="progress-li progress-li-gold" id="">
-                      <i class="far fa-circle award-gold"></i>
-                    </li>
-                  </ul>
-                  <div class="progress mb-2">
-                    <div class="progress-bar moveins-progress"></div>
-                  </div>
-                  <figcaption class="figure-caption pt-1">
-                    <p class="mb-0">
-                      <strong class="text-dark">48</strong> left to Silver!
-                    </p>
-                  </figcaption>
-                </figure>
-                <!-- Collapse -- Move-ins / Renewals details -->
-                <div
-                  class="row collapse collapse-details pt-2"
-                  id="collapseMoveInsDetails"
-                >
-                  <div class="col-4">
-                    <p class="m-0">Renewals</p>
-                    <p class="m-0">
-                      <strong
-                        class="details-number moveins-details-number"
-                        id="renewalsNum"
-                        >3</strong
-                      ><span class="text-muted">/20</span>
-                    </p>
-                  </div>
-                  <div class="col-4">
-                    <p class="m-0">Move Ins</p>
-                    <p class="m-0">
-                      <strong
-                        class="details-number moveins-details-number"
-                        id="moveInsNum"
-                        >0</strong
-                      ><span class="text-muted">/20</span>
-                    </p>
-                  </div>
+                <div class="col-4">
+                  <p class="m-0">Follow Ups</p>
+                  <p class="m-0">
+                    <strong
+                      class="details-number leads-details-number"
+                      id="followUpsNum"
+                      >50</strong
+                    ><span class="text-muted">/50</span>
+                  </p>
+                </div>
+                <div class="col-4">
+                  <p class="m-0">New Guest</p>
+                  <p class="m-0">
+                    <strong
+                      class="details-number leads-details-number"
+                      id="newGuestNum"
+                      >2</strong
+                    ><span class="text-muted">/50</span>
+                  </p>
                 </div>
               </div>
             </div>
           </div>
+          <!-- Appointments and Showings -->
+          <div class="row p-1" id="badgeApptsRow">
+            <div class="col border rounded mx-2 p-3">
+              <h6 class="badge-title-appts mb-0">Appointments & Showings</h6>
+              <!-- figure padding applied in styles.css -->
+              <figure class="figure mb-0 position-relative">
+                <!-- custom "award-icon" progress bar overlay -->
+                <!-- Note: dynamically created elements (js) have fontsize declared in style.css -->
+                <ul class="progressbar-awards position-absolute top-0 end-0">
+                  <li class="progress-li progress-li-bronze" id="">
+                    <i class="far fa-circle award-bronze"></i>
+                  </li>
+                  <li class="progress-li progress-li-silver" id="">
+                    <i class="far fa-circle award-silver"></i>
+                  </li>
+                  <li class="progress-li progress-li-gold" id="">
+                    <i class="far fa-circle award-gold"></i>
+                  </li>
+                </ul>
+                <div class="progress mb-2">
+                  <div
+                    class="progress-bar progress-bar-badge appts-progress"
+                  ></div>
+                </div>
+                <figcaption class="figure-caption pt-1">
+                  <p class="mb-0">
+                    <strong class="text-dark">48</strong> left to Gold!
+                  </p>
+                </figcaption>
+              </figure>
+              <!-- Collapse -- Appointments details -->
+              <div
+                class="row collapse collapse-details pt-2"
+                id="collapseApptsDetails"
+              >
+                <div class="col-4">
+                  <p class="m-0">Appointments</p>
+                  <p class="m-0">
+                    <strong
+                      class="details-number appts-details-number"
+                      id="apptsNum"
+                      >40</strong
+                    ><span class="text-muted">/40</span>
+                  </p>
+                </div>
+                <div class="col-4">
+                  <p class="m-0">Showings</p>
+                  <p class="m-0">
+                    <strong
+                      class="details-number appts-details-number"
+                      id="showingsNum"
+                      >30</strong
+                    ><span class="text-muted">/40</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Move-ins and Renewals  -->
+          <div class="row p-1" id="badgeMoveInsRow">
+            <div class="col border rounded mx-2 p-3">
+              <h6 class="badge-title-moveins mb-0">Move-ins & Renewals</h6>
+              <!-- figure padding applied in styles.css -->
+              <figure class="figure mb-0 position-relative">
+                <!-- custom "award-icon" progress bar overlay -->
+                <!-- Note: dynamically created elements (js) have fontsize declared in style.css -->
+                <ul class="progressbar-awards position-absolute top-0 end-0">
+                  <li class="progress-li progress-li-bronze" id="">
+                    <i class="far fa-circle award-bronze"></i>
+                  </li>
+                  <li class="progress-li progress-li-silver" id="">
+                    <i class="far fa-circle award-silver"></i>
+                  </li>
+                  <li class="progress-li progress-li-gold" id="">
+                    <i class="far fa-circle award-gold"></i>
+                  </li>
+                </ul>
+                <div class="progress mb-2">
+                  <div
+                    class="progress-bar progress-bar-badge moveins-progress"
+                  ></div>
+                </div>
+                <figcaption class="figure-caption pt-1">
+                  <p class="mb-0">
+                    <strong class="text-dark">48</strong> left to Silver!
+                  </p>
+                </figcaption>
+              </figure>
+              <!-- Collapse -- Move-ins / Renewals details -->
+              <div
+                class="row collapse collapse-details pt-2"
+                id="collapseMoveInsDetails"
+              >
+                <div class="col-4">
+                  <p class="m-0">Renewals</p>
+                  <p class="m-0">
+                    <strong
+                      class="details-number moveins-details-number"
+                      id="renewalsNum"
+                      >3</strong
+                    ><span class="text-muted">/20</span>
+                  </p>
+                </div>
+                <div class="col-4">
+                  <p class="m-0">Move Ins</p>
+                  <p class="m-0">
+                    <strong
+                      class="details-number moveins-details-number"
+                      id="moveInsNum"
+                      >0</strong
+                    ><span class="text-muted">/20</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- </div> -->
           <!-- END SECTION: "Badges" -->
 
           <!-- SECTION: "Ranking" -->
